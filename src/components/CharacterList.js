@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setCurrentCharacter } from '../reducer/character/actions';
+import { 
+	setCurrentCharacter,
+	getCharacterProfile
+	 } from '../reducer/character/actions';
 
 const CharacterList = ({ characters, setCharacter }) =>
 	<div id="character-list" className="col-md-6">
@@ -22,6 +25,7 @@ const mapDispatchToProps = dispatch => ({
 	setCharacter(id) {
 		return () => {
 			dispatch(setCurrentCharacter(id));
+			dispatch(getCharacterProfile(id));
 		};
 	}
 })
