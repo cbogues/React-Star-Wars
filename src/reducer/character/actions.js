@@ -3,6 +3,8 @@ import { API_URL } from '../../constants';
 
 export const SET_CURRENT_CHARACTER = 'SET_CURRENT_CHARACTER';
 export const SET_CHARACTER_PROFILE = 'SET_CHARACTER_PROFILE';
+export const SET_CHARACTER_WORLD = 'SET_CHARACTER_WORLD';
+
 
 export function setCurrentCharacter(id) {
 	return {
@@ -16,7 +18,8 @@ export function getCharacterProfile(id) {
 	fetch(`${API_URL}/people/${id}`)
 	.then(res => res.json())
 	.then(profile => {
-		dispatch(setCharacterProfile(profile))
+		dispatch(setCharacterProfile(profile));
+		dispatch(getCharacterWorld(profile.world));
 	});
 }
 
@@ -25,4 +28,20 @@ export function setCharacterProfile(profile) {
 		type: SET_CHARACTER_PROFILE,
 		profile
 	};
+}
+
+export function getCharacterWorld(url) {
+	return dispatch =>
+		fetch(url)
+		.then(res => res.json())
+		.then (world =>
+			dispatch(setCharacterWorld(world))
+		);
+}
+
+export default setCharacterWorld(world) {
+	return {
+		type: SET_CHARACTER_WORLD,
+		world
+	}
 }
