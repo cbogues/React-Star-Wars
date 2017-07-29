@@ -19,7 +19,7 @@ export function getCharacterProfile(id) {
 	.then(res => res.json())
 	.then(profile => {
 		dispatch(setCharacterProfile(profile));
-		dispatch(getCharacterWorld(profile.world));
+		dispatch(getCharacterWorld(profile.homeworld));
 	});
 }
 
@@ -39,7 +39,7 @@ export function getCharacterWorld(url) {
 		);
 }
 
-export default setCharacterWorld(world) {
+export function setCharacterWorld(world) {
 	return {
 		type: SET_CHARACTER_WORLD,
 		world
