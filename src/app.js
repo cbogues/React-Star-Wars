@@ -25,9 +25,9 @@ ReactDOM.render(
 	<AppContainer>
 		<Provider store={store}>
 			<App />
-		</Provider>
-	</AppContainer>
-	, container
+		<Provider />
+	<AppContainer />
+	,container
 );
 
 //Hot module reloading
@@ -37,9 +37,9 @@ if (module.hot) {
 			<AppContainer>
 				<Provider store={store}>	
 					<App />
-				</Provider>
-			</AppContainer>
-			, container
+				<Provider />
+			<AppContainer />
+			,container
 		);
 	});
 }
